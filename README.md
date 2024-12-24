@@ -9,6 +9,20 @@ To implement  JK flipflop using verilog and validating their functionality using
 Quartus prime
 
 **THEORY**
+module jkff(j,k,clk,q,qbar);
+ input j,k,clk;
+ output reg q,qbar;
+ initial 
+begin
+ q=1'b0;
+ q=1'b1;
+ end 
+always @(posedge clk)
+ begin 
+q<=(j&~q)|(~k&q);
+ qbar<=~q;
+ end
+ endmodule
 
 **JK Flip-Flop**
 
@@ -43,6 +57,14 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **RTL LOGIC FOR FLIPFLOPS**
 
+
+![Screenshot 2024-12-24 185045](https://github.com/user-attachments/assets/33ee6288-0a20-44d8-8e76-85d45f01b3c4)
+
+
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
+
+![Screenshot 2024-12-24 185107](https://github.com/user-attachments/assets/9829c8f6-5918-4b06-889c-5a63d0f6d65b)
+
 **RESULTS**
+Thus the program to implement JK flipflop using verilog and validating their
