@@ -10,21 +10,6 @@ Quartus prime
 
 **THEORY**
 
-         module jkff(j,k,clk,q,qbar);
-          input j,k,clk;
-          output reg q,qbar;
-          initial 
-         begin
-          q=1'b0;
-          q=1'b1;
-          end 
-         always @(posedge clk)
-          begin 
-         q<=(j&~q)|(~k&q);
-          qbar<=~q;
-          end
-          endmodule
-
 **JK Flip-Flop**
 
 JK flip-flop is the modified version of SR flip-flop. It operates with only positive clock transitions or negative clock transitions. The circuit diagram of JK flip-flop is shown in the following figure.
@@ -49,11 +34,32 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+1.Type the program in Quartus software.
+
+2.Compile and run the program.
+
+3.Generate the RTL schematic and save the logic diagram.
+
+4.Create nodes for inputs and outputs to generate the timing diagram.
+
+5.For different input combinations generate the timing diagram
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming.
+        module jkff(j,k,clk,q,qbar);
+          input j,k,clk;
+          output reg q,qbar;
+          initial 
+         begin
+          q=1'b0;
+          q=1'b1;
+          end 
+         always @(posedge clk)
+          begin 
+         q<=(j&~q)|(~k&q);
+          qbar<=~q;
+          end
+          endmodule
 Developed by: pothu sumanth 
 RegisterNumber:24000831
 */
