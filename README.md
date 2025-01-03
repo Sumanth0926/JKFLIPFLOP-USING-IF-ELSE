@@ -10,6 +10,8 @@ Quartus prime
 
 **THEORY**
 
+JK flip-flop is the modified version of SR flip-flop. It operates with only positive clock transitions or negative clock transitions. The circuit diagram of JK flip-flop is shown in the following figure.
+
 **JK Flip-Flop**
 
 JK flip-flop is the modified version of SR flip-flop. It operates with only positive clock transitions or negative clock transitions. The circuit diagram of JK flip-flop is shown in the following figure.
@@ -46,35 +48,56 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **PROGRAM**
 
-        module jkff(j,k,clk,q,qbar);
-          input j,k,clk;
-          output reg q,qbar;
-          initial 
-         begin
-          q=1'b0;
-          q=1'b1;
-          end 
-         always @(posedge clk)
-          begin 
-         q<=(j&~q)|(~k&q);
-          qbar<=~q;
-          end
-          endmodule
+ module jk_ff (j, k, clk, rst, q);
+
+input j, k, clk, rst;
+
+output reg q;
+
+always @(posedge clk or posedge rst) begin
+
+if (rst)
+
+q <= 0; // Reset the flip-flop
+
+else if (j == 0 && k == 0)
+
+q <= q; // No change
+
+else if (j == 0 && k == 1)
+
+q <= 0; // Reset
+
+else if (j == 1 && k == 0)
+
+q <= 1; // Set
+
+else if (j == 1 && k == 1)
+
+q <= ~q; // Toggle
+
+end
+
+endmodule
+
 Developed by: pothu sumanth 
 RegisterNumber:24000831
-*/
+
 
 **RTL LOGIC FOR FLIPFLOPS**
 
 
-![WhatsApp Image 2024-12-27 at 13 31 27_ab7ce1b2](https://github.com/user-attachments/assets/1f69b4ba-58fe-42ed-8209-b58b91667e07)
+![Screenshot 2025-01-03 134536](https://github.com/user-attachments/assets/910f855c-a679-469d-b0b5-ab38503f613e)
 
 
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
 
-![WhatsApp Image 2024-12-27 at 13 30 51_61af3b89](https://github.com/user-attachments/assets/4a7bcd85-ada4-48d2-b1e2-683a35ed1630)
+
+![Screenshot 2025-01-03 134542](https://github.com/user-attachments/assets/9e83abd6-1340-4168-b9de-0257d6c18cd0)
+
+
 
 
 
